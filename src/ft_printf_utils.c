@@ -6,38 +6,54 @@
 /*   By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 14:13:35 by vahemere          #+#    #+#             */
-/*   Updated: 2021/12/04 15:50:40 by vahemere         ###   ########.fr       */
+/*   Updated: 2021/12/04 23:04:04 by vahemere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void    ft_putchar(char c)
+int	ft_putchar(char c)
 {
-    write(1, &c, 1);
+	write(1, &c, 1);
+	return (1);
 }
 
-void    ft_putstr(char *str)
+int	ft_putstr(char *str)
 {
-    while (*str++)
-        write(1, &str, 1);
+	int	i;
+
+	i = -1;
+	while (str[++i])
+		write(1, str[i], 1);
+	return (i);
 }
 
-void    ft_putnbr(int nb)
+/*int	ft_putnbr(long nb)
 {
-    if (nb > 9)
-        ft_putnbr(nb / 10);
-    ft_putchar((nb % 10) + 48);
-}
+    static int	len;
 
-void    ft_putnbr_base(long nb, char *base, int base_size)
+    len = 0;
+	if (nb > 9)
+		ft_putnbr(nb / 10);
+	len += ft_putchar((nb % 10) + 48);
+    return (len);
+}*/
+
+int	ft_putnbr_base(long nb, char *base, int base_size)
 {
-    if (nb < 0)
-    {
-        ft_putchar('-');
-        nb = -nb;
-    }
-    if (nb > base_size)
-        ft_putnbr_base((nb / base_size), base, base_size);
-    ft_putchar(base[nb % base_size]);
+	static int	len;
+	int			sign;
+
+	len = 0;
+	sign = 0;
+	if (nb < 0)
+	{
+		ft_putchar('-');
+		nb = -nb;
+		sign += 1;
+	}
+	if (nb > base_size)
+		ft_putnbr_base((nb / base_size), base, base_size);
+	len += ft_putchar(base[nb % base_size]);
+	return (len + sign);
 }

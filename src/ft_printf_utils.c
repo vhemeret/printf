@@ -6,7 +6,7 @@
 /*   By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 14:13:35 by vahemere          #+#    #+#             */
-/*   Updated: 2021/12/05 13:29:57 by vahemere         ###   ########.fr       */
+/*   Updated: 2021/12/05 20:21:43 by vahemere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	ft_putnbr(long nb)
 	return (len + sign);
 }
 
-int	ft_putnbr_base(unsigned long nb, char *base, int base_size)
+int	ft_putnbr_b(unsigned long nb, char *base, int base_size)
 {
 	static int	len;
 	int			sign;
@@ -66,7 +66,7 @@ int	ft_putnbr_base(unsigned long nb, char *base, int base_size)
 		sign += 1;
 	}
 	if (nb >= (unsigned long)base_size)
-		ft_putnbr_base((nb / base_size), base, base_size);
+		ft_putnbr_b((nb / base_size), base, base_size);
 	len += ft_putchar(base[nb % base_size]);
 	return (len + sign);
 }

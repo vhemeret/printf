@@ -6,7 +6,7 @@
 /*   By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 13:50:03 by vahemere          #+#    #+#             */
-/*   Updated: 2021/12/04 23:04:06 by vahemere         ###   ########.fr       */
+/*   Updated: 2021/12/05 13:28:48 by vahemere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 int		ft_printf(const char *src, ...);
 int		ft_type(va_list arg, char type);
 int		ft_putchar(char c);
-int		ft_putnbr_base(long nb, char *base, int base_size);
-//int		ft_putnbr(int nb, int i);
+int		ft_putstr(char *str);
+int		ft_putnbr_b(unsigned long nb, char *base, int base_size);
+int		ft_putnbr(long nb);
 
 #endif
